@@ -175,10 +175,10 @@
     }
   ],
   "endings": [
-    { "when": { "resource": "oil", "edge": "min" }, "text": "The lamp gutters and dies. In the dark, a hull splinters on the rocks below." },
-    { "when": { "resource": "supplies", "edge": "min" }, "text": "The larder is empty. Hunger finishes what the sea began." },
-    { "when": { "resource": "health", "edge": "min" }, "text": "Fever and damp take their toll. The relief boat finds the light still burning, and you cold beside it." },
-    { "when": { "resource": "spirits", "edge": "min" }, "text": "The silence wins. One grey dawn you walk down to the water and keep walking." },
-    { "fallback": true, "text": "The relief boat returns on the ninetieth day. The light never failed once. You did your duty." }
+    { "when": { "resource": "oil", "edge": "min" }, "image": "wreck", "text": "The lamp gutters and dies. In the dark, a hull splinters on the rocks below." },
+    { "when": { "resource": "supplies", "edge": "min" }, "image": "starved", "text": "The larder is empty. Hunger finishes what the sea began." },
+    { "when": { "resource": "health", "edge": "min" }, "image": "fever", "text": "Fever and damp take their toll. The relief boat finds the light still burning, and you cold beside it." },
+    { "when": { "resource": "spirits", "edge": "min" }, "image": "despair", "text": "The silence wins. One grey dawn you walk down to the water and keep walking." },
+    { "fallback": true, "image": "survived", "text": "The relief boat returns on the ninetieth day. The light never failed once. You did your duty." }
   ]
 }

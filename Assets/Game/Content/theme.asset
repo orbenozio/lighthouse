@@ -18,9 +18,44 @@ MonoBehaviour:
   accent: {r: 0.95, g: 0.72, b: 0.3, a: 1}
   approaching: {r: 0.95, g: 0.75, b: 0.2, a: 1}
   willBreak: {r: 0.85, g: 0.25, b: 0.25, a: 1}
+  keyArt: {fileID: 21300000, guid: 3cbf70e335f0d9449b5437df636331f6, type: 3}
+  logo: {fileID: 21300000, guid: d139c350067130c4ab3d2f912b103cc3, type: 3}
+  cardArt: {fileID: 21300000, guid: a83ce99d93517fc43993db0096ef8c2e, type: 3}
+  meterFrame: {fileID: 21300000, guid: a8db07f9e4899104abc583a594d0175e, type: 3}
+  speakerFrame: {fileID: 0}
+  buttonSprite: {fileID: 21300000, guid: f3d9f218092c9cf48b1b2ebacd7b83ac, type: 3}
+  menuIcon: {fileID: 21300000, guid: ca6eb68088429cb44bbcda2059fc90b7, type: 3}
+  loadingArt: {fileID: 21300000, guid: c73426452e3e2e24b81163eebc9bbe09, type: 3}
+  music: {fileID: 8300000, guid: fa958bd95961b3d42b6254fe07df677e, type: 3}
+  musicMenu: {fileID: 8300000, guid: 2d52d1276c3e0df49af11d85ea5c1ed2, type: 3}
+  swipeSfx: {fileID: 0}
+  cardSfx: {fileID: 0}
+  clickSfx: {fileID: 0}
   font: {fileID: 0}
+  tmpFont: {fileID: 0}
   rightToLeft: 0
   resourceLabels:
   - id: spirits
     label: Resolve
+    icon: {fileID: 21300000, guid: fb20d1224bb56b6488b5955a49d4a9d2, type: 3}
+  - id: health
+    label: 
+    icon: {fileID: 21300000, guid: 610074dcef7cab045ba4eec3d606c184, type: 3}
+  - id: oil
+    label: 
+    icon: {fileID: 21300000, guid: 583172d73d2a68541ab8cd5766ac2567, type: 3}
+  - id: supplies
+    label: 
+    icon: {fileID: 21300000, guid: 18286989caceef747a84d14ce5345e57, type: 3}
   speakers: []
+  endingArt:
+  - key: despair
+    art: {fileID: 21300000, guid: c90f2cc4830b9e24e96ac1c22c4abcf8, type: 3}
+  - key: fever
+    art: {fileID: 21300000, guid: de670675e9ab1d84780b0fd60a824018, type: 3}
+  - key: starved
+    art: {fileID: 21300000, guid: 47a513e24b4be6b4c907ed2058296e9e, type: 3}
+  - key: survived
+    art: {fileID: 21300000, guid: ceb0ea26585619b40863fdbab85baa9b, type: 3}
+  - key: wreck
+    art: {fileID: 21300000, guid: 6526cf582574ef34a99dfccc157fe759, type: 3}
