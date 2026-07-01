@@ -24,6 +24,7 @@ namespace Crossroads.Game.Lighthouse
         [SerializeField] private MenuOverlay menu;
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private AudioDirector audioDirector;
+        [SerializeField] private LoadingScreen loadingScreen;
 
         [Header("Title / menu text")]
         [SerializeField] private string title = "Crossroads";
@@ -41,6 +42,7 @@ namespace Crossroads.Game.Lighthouse
                 cardView = cardView, resourceBar = resourceBar, swipeInput = swipeInput,
                 endScreen = endScreen, messageOverlay = messageOverlay, menu = menu,
                 pauseButton = pauseButton, audioDirector = audioDirector,
+                loadingScreen = loadingScreen, loadingCaption = "Lighting the lamp...",
             });
         }
     }
