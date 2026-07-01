@@ -18,6 +18,30 @@ MonoBehaviour:
   accent: {r: 0.95, g: 0.72, b: 0.3, a: 1}
   approaching: {r: 0.95, g: 0.75, b: 0.2, a: 1}
   willBreak: {r: 0.85, g: 0.25, b: 0.25, a: 1}
+  textMuted:
+    set: 0
+    value: {r: 0, g: 0, b: 0, a: 0}
+  ring:
+    set: 1
+    value: {r: 0.82, g: 0.72, b: 0.55, a: 1}
+  divider:
+    set: 0
+    value: {r: 0, g: 0, b: 0, a: 0}
+  choiceHint:
+    set: 1
+    value: {r: 0.72, g: 0.82, b: 0.86, a: 1}
+  choiceGlow:
+    set: 1
+    value: {r: 1, g: 0.86, b: 0.55, a: 1}
+  hudPlate:
+    set: 1
+    value: {r: 0.08, g: 0.14, b: 0.18, a: 0.72}
+  plaqueFill:
+    set: 1
+    value: {r: 0.05, g: 0.09, b: 0.12, a: 0.72}
+  plaqueEdge:
+    set: 1
+    value: {r: 0.82, g: 0.72, b: 0.55, a: 0.95}
   keyArt: {fileID: 21300000, guid: 3cbf70e335f0d9449b5437df636331f6, type: 3}
   logo: {fileID: 21300000, guid: d139c350067130c4ab3d2f912b103cc3, type: 3}
   cardArt: {fileID: 21300000, guid: a83ce99d93517fc43993db0096ef8c2e, type: 3}
@@ -26,13 +50,37 @@ MonoBehaviour:
   buttonSprite: {fileID: 21300000, guid: f3d9f218092c9cf48b1b2ebacd7b83ac, type: 3}
   menuIcon: {fileID: 21300000, guid: ca6eb68088429cb44bbcda2059fc90b7, type: 3}
   loadingArt: {fileID: 21300000, guid: c73426452e3e2e24b81163eebc9bbe09, type: 3}
+  gameplayArt: {fileID: 21300000, guid: 3cbf70e335f0d9449b5437df636331f6, type: 3}
   music: {fileID: 8300000, guid: fa958bd95961b3d42b6254fe07df677e, type: 3}
   musicMenu: {fileID: 8300000, guid: 2d52d1276c3e0df49af11d85ea5c1ed2, type: 3}
-  swipeSfx: {fileID: 0}
-  cardSfx: {fileID: 0}
-  clickSfx: {fileID: 0}
+  swipeSfx: {fileID: 8300000, guid: a21d99083c0a2424baa9df317d1ae04a, type: 3}
+  cardSfx: {fileID: 8300000, guid: 4c39e1c9a373eda43943bf2f1b1ac16d, type: 3}
+  clickSfx: {fileID: 8300000, guid: e129e9a91bb7ece4987f528fb1178203, type: 3}
+  medallion:
+    size:
+      set: 1
+      value: 180
+    ringColor:
+      set: 0
+      value: {r: 0, g: 0, b: 0, a: 0}
+    ringThickness:
+      set: 0
+      value: 0
+    innerFraction:
+      set: 0
+      value: 0
+  meter:
+    iconSize:
+      set: 1
+      value: 88
+    frameSize:
+      set: 0
+      value: 0
+    iconTint:
+      set: 1
+      value: {r: 0.92, g: 0.9, b: 0.85, a: 1}
   font: {fileID: 0}
-  tmpFont: {fileID: 0}
+  tmpFont: {fileID: 11400000, guid: 93a3d5f4f92f01745a0afd124de8d7af, type: 2}
   rightToLeft: 0
   resourceLabels:
   - id: spirits
@@ -47,7 +95,19 @@ MonoBehaviour:
   - id: supplies
     label: 
     icon: {fileID: 21300000, guid: 18286989caceef747a84d14ce5345e57, type: 3}
-  speakers: []
+  speakers:
+  - id: boatman
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 21300000, guid: eed8f3bbe66ae66438ff48f132a196f7, type: 3}
+  - id: castaway
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 21300000, guid: 0ecf4155cba911443b1e4ef64b5f4f11, type: 3}
+  - id: inspector
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 21300000, guid: 69820e87d07a3344db2dd5c00886943c, type: 3}
+  - id: smuggler
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    icon: {fileID: 21300000, guid: dd93a2fda8f93a4468be9c1366806017, type: 3}
   endingArt:
   - key: despair
     art: {fileID: 21300000, guid: c90f2cc4830b9e24e96ac1c22c4abcf8, type: 3}

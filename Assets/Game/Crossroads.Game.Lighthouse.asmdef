@@ -1,7 +1,7 @@
 {
     "name": "Crossroads.Game.Lighthouse",
     "rootNamespace": "Crossroads.Game.Lighthouse",
-    "references": ["Crossroads.Engine", "Crossroads.UI"],
+    "references": ["Crossroads.Engine", "Crossroads.UI", "UnityEngine.UI", "Unity.TextMeshPro"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
