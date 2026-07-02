@@ -45,12 +45,13 @@ MonoBehaviour:
   keyArt: {fileID: 21300000, guid: 3cbf70e335f0d9449b5437df636331f6, type: 3}
   logo: {fileID: 21300000, guid: d139c350067130c4ab3d2f912b103cc3, type: 3}
   cardArt: {fileID: 21300000, guid: a83ce99d93517fc43993db0096ef8c2e, type: 3}
-  meterFrame: {fileID: 21300000, guid: a8db07f9e4899104abc583a594d0175e, type: 3}
-  speakerFrame: {fileID: 0}
+  meterFrame: {fileID: 0}
+  speakerFrame: {fileID: 21300000, guid: a8db07f9e4899104abc583a594d0175e, type: 3}
   buttonSprite: {fileID: 21300000, guid: f3d9f218092c9cf48b1b2ebacd7b83ac, type: 3}
   menuIcon: {fileID: 21300000, guid: ca6eb68088429cb44bbcda2059fc90b7, type: 3}
   loadingArt: {fileID: 21300000, guid: c73426452e3e2e24b81163eebc9bbe09, type: 3}
   gameplayArt: {fileID: 21300000, guid: 3cbf70e335f0d9449b5437df636331f6, type: 3}
+  loadingMarker: {fileID: 21300000, guid: e588053710527114a87a34f84504a868, type: 3}
   music: {fileID: 8300000, guid: fa958bd95961b3d42b6254fe07df677e, type: 3}
   musicMenu: {fileID: 8300000, guid: 2d52d1276c3e0df49af11d85ea5c1ed2, type: 3}
   swipeSfx: {fileID: 8300000, guid: a21d99083c0a2424baa9df317d1ae04a, type: 3}
@@ -59,7 +60,7 @@ MonoBehaviour:
   medallion:
     size:
       set: 1
-      value: 180
+      value: 230
     ringColor:
       set: 0
       value: {r: 0, g: 0, b: 0, a: 0}

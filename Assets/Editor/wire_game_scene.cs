@@ -282,7 +282,11 @@ namespace UnityAgentBridge.Editor.CustomTools
                 body.raycastTarget = false;   // size / alignment / color are set once below (covers baked bodies too)
             }
             UIFonts.Apply(body);
-            body.fontSize = 42;   // larger body text for mobile, applied to baked bodies too (agent)
+            // Auto-size so long narration shrinks to fit its band instead of overflowing onto the choice
+            // plaques (device feedback). CardView.Bind only sets .text/.rect/.color, so these hold at runtime.
+            body.enableAutoSizing = true;
+            body.fontSizeMin = 24;
+            body.fontSizeMax = 42;
             body.alignment = TextAlignmentOptions.Center;
             body.color = Color.white;
             return body;
