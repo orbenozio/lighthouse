@@ -1,28 +1,24 @@
 {
   "schemaVersion": 1,
   "startNodeId": "intro_01",
+  "maxTurns": 28,
   "nodes": [
     {
       "id": "intro_01",
       "speaker": "narrator",
       "body": "The mainland boat pulls away. For ninety days, the light is yours alone.",
       "choices": [
-        {
-          "side": "left",
-          "label": "Settle in carefully",
-          "effects": [
-            { "resource": "supplies", "delta": 1 },
-            { "resource": "spirits", "delta": -1 }
-          ]
-        },
-        {
-          "side": "right",
-          "label": "Light her up tonight",
-          "effects": [
-            { "resource": "oil", "delta": -2 },
-            { "resource": "spirits", "delta": 1 }
-          ]
-        }
+        { "side": "left", "label": "Settle in carefully", "effects": [ { "resource": "supplies", "delta": 1 }, { "resource": "spirits", "delta": -1 } ] },
+        { "side": "right", "label": "Light her up tonight", "effects": [ { "resource": "oil", "delta": -2 }, { "resource": "spirits", "delta": 1 } ] }
+      ]
+    },
+    {
+      "id": "first_dawn",
+      "speaker": "narrator",
+      "body": "First light. The lamp held through the night. You stand on the gallery and breathe the salt air.",
+      "choices": [
+        { "side": "left", "label": "Walk the rocks for driftwood", "effects": [ { "resource": "supplies", "delta": 1 }, { "resource": "health", "delta": -1 } ] },
+        { "side": "right", "label": "Open the keeper's log", "effects": [ { "resource": "spirits", "delta": 1 } ], "setFlags": { "log_kept": true } }
       ]
     },
     {
@@ -30,147 +26,199 @@
       "speaker": "narrator",
       "body": "A black storm rolls in. The lamp must burn the whole night through.",
       "choices": [
-        {
-          "side": "left",
-          "label": "Burn extra oil",
-          "effects": [
-            { "resource": "oil", "delta": -2 },
-            { "resource": "health", "delta": -1 }
-          ]
-        },
-        {
-          "side": "right",
-          "label": "Ration the flame",
-          "effects": [
-            { "resource": "oil", "delta": -1 },
-            { "resource": "spirits", "delta": -1 }
-          ]
-        }
+        { "side": "left", "label": "Burn extra oil", "effects": [ { "resource": "oil", "delta": -2 }, { "resource": "health", "delta": -1 } ] },
+        { "side": "right", "label": "Ration the flame", "effects": [ { "resource": "oil", "delta": -1 }, { "resource": "spirits", "delta": -1 } ] }
+      ]
+    },
+    {
+      "id": "fog_bank",
+      "speaker": "narrator",
+      "body": "A wall of fog swallows the sea. Somewhere out there, hulls are feeling their way home.",
+      "choices": [
+        { "side": "left", "label": "Stand the fog-bell all night", "effects": [ { "resource": "health", "delta": -2 }, { "resource": "spirits", "delta": 1 } ] },
+        { "side": "right", "label": "Trust the lamp and sleep", "effects": [ { "resource": "oil", "delta": -1 }, { "resource": "health", "delta": 1 } ] }
       ]
     },
     {
       "id": "ship_passing",
       "speaker": "narrator",
       "body": "A freighter's horn moans somewhere out in the fog.",
-      "appearWhen": {
-        "allOf": [ { "resource": "oil", "op": ">=", "value": 2 } ]
-      },
+      "appearWhen": { "allOf": [ { "resource": "oil", "op": ">=", "value": 2 } ] },
       "choices": [
-        {
-          "side": "left",
-          "label": "Signal her with the lamp",
-          "effects": [
-            { "resource": "oil", "delta": -1 },
-            { "resource": "spirits", "delta": 2 }
-          ]
-        },
-        {
-          "side": "right",
-          "label": "Let her pass",
-          "effects": [
-            { "resource": "spirits", "delta": -1 }
-          ]
-        }
+        { "side": "left", "label": "Signal her with the lamp", "effects": [ { "resource": "oil", "delta": -1 }, { "resource": "spirits", "delta": 2 } ] },
+        { "side": "right", "label": "Let her pass", "effects": [ { "resource": "spirits", "delta": -1 } ] }
       ]
     },
     {
-      "id": "sickness",
+      "id": "castaway",
       "speaker": "narrator",
-      "body": "A fever takes hold in the cold and the damp.",
-      "appearWhen": {
-        "allOf": [ { "resource": "health", "op": "<=", "value": 4 } ]
-      },
+      "body": "At dawn a half-drowned man lies tangled in the kelp below the rocks, barely breathing.",
       "choices": [
-        {
-          "side": "left",
-          "label": "Rest below the lamp",
-          "effects": [
-            { "resource": "health", "delta": 2 },
-            { "resource": "oil", "delta": -1 }
-          ]
-        },
-        {
-          "side": "right",
-          "label": "Push through the fever",
-          "effects": [
-            { "resource": "health", "delta": -1 },
-            { "resource": "spirits", "delta": -1 }
-          ]
-        }
+        { "side": "left", "label": "Haul him up and warm him", "effects": [ { "resource": "supplies", "delta": -2 }, { "resource": "spirits", "delta": 2 } ], "setFlags": { "castaway_saved": true } },
+        { "side": "right", "label": "He is the sea's now", "effects": [ { "resource": "spirits", "delta": -2 }, { "resource": "health", "delta": 1 } ] }
+      ]
+    },
+    {
+      "id": "castaway_helps",
+      "speaker": "castaway",
+      "body": "'I owe you the whole rest of my life, keeper. Let me earn a little of it.' The man you pulled from the kelp has his strength back, grinning into the wind.",
+      "appearWhen": { "allOf": [ { "flag": "castaway_saved", "is": true } ] },
+      "choices": [
+        { "side": "left", "label": "Put him to work on the lamp", "effects": [ { "resource": "oil", "delta": 2 }, { "resource": "supplies", "delta": -1 } ] },
+        { "side": "right", "label": "Just share the evening", "effects": [ { "resource": "spirits", "delta": 2 }, { "resource": "supplies", "delta": -1 } ] }
+      ]
+    },
+    {
+      "id": "smuggler",
+      "speaker": "smuggler",
+      "body": "A low boat noses into the cove after dark. 'Keep your log blind tonight, keeper, and there's oil in it for you. No one on the mainland need ever know.'",
+      "choices": [
+        { "side": "left", "label": "Take the oil, ask nothing", "effects": [ { "resource": "oil", "delta": 3 }, { "resource": "spirits", "delta": -2 } ], "setFlags": { "smuggler_deal": true } },
+        { "side": "right", "label": "Send them off", "effects": [ { "resource": "spirits", "delta": 1 }, { "resource": "oil", "delta": -1 } ] }
+      ]
+    },
+    {
+      "id": "smuggler_return",
+      "speaker": "smuggler",
+      "body": "The low boat is back, and this time they are not asking. 'A blind eye once is a habit now, keeper. Look away again, or we give the Board something to read.'",
+      "appearWhen": { "allOf": [ { "flag": "smuggler_deal", "is": true } ] },
+      "choices": [
+        { "side": "left", "label": "Hold your ground", "effects": [ { "resource": "health", "delta": -2 }, { "resource": "spirits", "delta": 2 } ] },
+        { "side": "right", "label": "Look away again", "effects": [ { "resource": "oil", "delta": 2 }, { "resource": "spirits", "delta": -2 } ] }
+      ]
+    },
+    {
+      "id": "wreck_salvage",
+      "speaker": "narrator",
+      "body": "A fishing smack lies broken on the south rocks. Crates bob in the surf among darker things you try not to look at.",
+      "choices": [
+        { "side": "left", "label": "Salvage what the sea offers", "effects": [ { "resource": "supplies", "delta": 3 }, { "resource": "spirits", "delta": -2 } ] },
+        { "side": "right", "label": "Bury what washes ashore", "effects": [ { "resource": "spirits", "delta": 1 }, { "resource": "health", "delta": -1 } ] }
+      ]
+    },
+    {
+      "id": "lamp_crack",
+      "speaker": "narrator",
+      "body": "A frozen night, a sharp report - a crack runs clean across one prism of the great lens.",
+      "choices": [
+        { "side": "left", "label": "Bind it with wire and oilcloth", "effects": [ { "resource": "supplies", "delta": -1 }, { "resource": "oil", "delta": -1 } ], "setFlags": { "lamp_cracked": true } },
+        { "side": "right", "label": "Let it burn as it is", "effects": [ { "resource": "spirits", "delta": -2 } ], "setFlags": { "lamp_cracked": true } }
+      ]
+    },
+    {
+      "id": "lamp_dim",
+      "speaker": "narrator",
+      "body": "The bound prism scatters the beam. From the sea the light must look like a guttering candle.",
+      "appearWhen": { "allOf": [ { "flag": "lamp_cracked", "is": true } ] },
+      "choices": [
+        { "side": "left", "label": "Burn double to compensate", "effects": [ { "resource": "oil", "delta": -3 }, { "resource": "spirits", "delta": 1 } ] },
+        { "side": "right", "label": "Pray it is enough", "effects": [ { "resource": "spirits", "delta": -2 } ] }
       ]
     },
     {
       "id": "supply_low",
       "speaker": "narrator",
       "body": "The larder is nearly bare. The next boat is weeks away.",
-      "appearWhen": {
-        "allOf": [ { "resource": "supplies", "op": "<=", "value": 4 } ]
-      },
+      "appearWhen": { "allOf": [ { "resource": "supplies", "op": "<=", "value": 4 } ] },
       "choices": [
-        {
-          "side": "left",
-          "label": "Fish from the rocks",
-          "effects": [
-            { "resource": "supplies", "delta": 2 },
-            { "resource": "health", "delta": -1 }
-          ]
-        },
-        {
-          "side": "right",
-          "label": "Tighten your belt",
-          "effects": [
-            { "resource": "supplies", "delta": 1 },
-            { "resource": "spirits", "delta": -1 }
-          ]
-        }
+        { "side": "left", "label": "Fish from the rocks", "effects": [ { "resource": "supplies", "delta": 2 }, { "resource": "health", "delta": -1 } ] },
+        { "side": "right", "label": "Tighten your belt", "effects": [ { "resource": "supplies", "delta": 1 }, { "resource": "spirits", "delta": -1 } ] }
+      ]
+    },
+    {
+      "id": "cold_snap",
+      "speaker": "narrator",
+      "body": "The cold comes down like a hammer. Ice sheaths the rail and your breath hangs in the lamp-room.",
+      "choices": [
+        { "side": "left", "label": "Burn oil to keep warm", "effects": [ { "resource": "oil", "delta": -2 }, { "resource": "health", "delta": 1 } ] },
+        { "side": "right", "label": "Endure it in blankets", "effects": [ { "resource": "health", "delta": -2 }, { "resource": "supplies", "delta": 1 } ] }
+      ]
+    },
+    {
+      "id": "sickness",
+      "speaker": "narrator",
+      "body": "A fever takes hold in the cold and the damp.",
+      "appearWhen": { "allOf": [ { "resource": "health", "op": "<=", "value": 4 } ] },
+      "choices": [
+        { "side": "left", "label": "Rest below the lamp", "effects": [ { "resource": "health", "delta": 2 }, { "resource": "oil", "delta": -1 } ] },
+        { "side": "right", "label": "Push through the fever", "effects": [ { "resource": "health", "delta": -1 }, { "resource": "spirits", "delta": -1 } ] }
+      ]
+    },
+    {
+      "id": "gull",
+      "speaker": "narrator",
+      "body": "A storm-broken gull huddles on the gallery, one wing dragging, watching you with a black bead of an eye.",
+      "choices": [
+        { "side": "left", "label": "Splint its wing, share your fish", "effects": [ { "resource": "supplies", "delta": -1 }, { "resource": "spirits", "delta": 2 } ], "setFlags": { "gull_friend": true } },
+        { "side": "right", "label": "Leave it to the wind", "effects": [ { "resource": "spirits", "delta": -1 } ] }
+      ]
+    },
+    {
+      "id": "gull_companion",
+      "speaker": "narrator",
+      "body": "The gull rides your shoulder up the spiral stair each dusk now, scolding the dark with you.",
+      "appearWhen": { "allOf": [ { "flag": "gull_friend", "is": true } ] },
+      "choices": [
+        { "side": "left", "label": "Talk to it like a friend", "effects": [ { "resource": "spirits", "delta": 2 }, { "resource": "supplies", "delta": -1 } ] },
+        { "side": "right", "label": "Send it back to its own kind", "effects": [ { "resource": "spirits", "delta": -1 }, { "resource": "health", "delta": 1 } ] }
+      ]
+    },
+    {
+      "id": "message_bottle",
+      "speaker": "narrator",
+      "body": "A green bottle clinks against the rocks. Inside, a curl of paper gone soft with the sea.",
+      "choices": [
+        { "side": "left", "label": "Dry it and read it", "effects": [ { "resource": "spirits", "delta": 1 } ] },
+        { "side": "right", "label": "Cast it back unread", "effects": [ { "resource": "spirits", "delta": -1 }, { "resource": "health", "delta": 1 } ] }
       ]
     },
     {
       "id": "loneliness",
       "speaker": "narrator",
       "body": "The silence presses in. You catch yourself talking to the gulls.",
-      "appearWhen": {
-        "allOf": [ { "resource": "spirits", "op": "<=", "value": 4 } ]
-      },
+      "appearWhen": { "allOf": [ { "resource": "spirits", "op": "<=", "value": 4 } ] },
       "choices": [
-        {
-          "side": "left",
-          "label": "Fill the keeper's log",
-          "effects": [
-            { "resource": "spirits", "delta": 2 }
-          ]
-        },
-        {
-          "side": "right",
-          "label": "Stare from the gallery",
-          "effects": [
-            { "resource": "spirits", "delta": -1 },
-            { "resource": "health", "delta": -1 }
-          ]
-        }
+        { "side": "left", "label": "Fill the keeper's log", "effects": [ { "resource": "spirits", "delta": 2 } ], "setFlags": { "log_kept": true } },
+        { "side": "right", "label": "Stare from the gallery", "effects": [ { "resource": "spirits", "delta": -1 }, { "resource": "health", "delta": -1 } ] }
+      ]
+    },
+    {
+      "id": "nightmares",
+      "speaker": "narrator",
+      "body": "Low on hope, you wake to footsteps on the stair that stop at your door. There is no one. There is never anyone.",
+      "appearWhen": { "allOf": [ { "resource": "spirits", "op": "<=", "value": 3 } ] },
+      "choices": [
+        { "side": "left", "label": "Climb up and tend the light", "effects": [ { "resource": "spirits", "delta": 1 }, { "resource": "health", "delta": -1 } ] },
+        { "side": "right", "label": "Bar the door till dawn", "effects": [ { "resource": "spirits", "delta": -2 } ] }
       ]
     },
     {
       "id": "inspector",
-      "speaker": "narrator",
-      "body": "Against all odds, an inspection cutter ties up at the jetty.",
+      "speaker": "inspector",
+      "body": "An inspection cutter ties up at the jetty. 'Everything in order, keeper? The Board does like a spotless log,' the officer says, ledger already open.",
       "choices": [
-        {
-          "side": "left",
-          "label": "Show a spotless log",
-          "effects": [
-            { "resource": "spirits", "delta": 1 },
-            { "resource": "supplies", "delta": -1 }
-          ]
-        },
-        {
-          "side": "right",
-          "label": "Beg them for more oil",
-          "effects": [
-            { "resource": "oil", "delta": 3 },
-            { "resource": "spirits", "delta": -1 }
-          ]
-        }
+        { "side": "left", "label": "Show a spotless log", "effects": [ { "resource": "spirits", "delta": 1 }, { "resource": "supplies", "delta": -1 } ] },
+        { "side": "right", "label": "Beg them for more oil", "effects": [ { "resource": "oil", "delta": 3 }, { "resource": "spirits", "delta": -1 } ] }
+      ]
+    },
+    {
+      "id": "supply_boat",
+      "speaker": "boatman",
+      "body": "The relief tender beats in against the swell. 'Ninety days is a long haul alone,' the boatman calls, heaving crates onto the rock. 'Brought your stores - and a letter, came for you.'",
+      "appearWhen": { "allOf": [ { "resource": "supplies", "op": "<=", "value": 5 } ] },
+      "choices": [
+        { "side": "left", "label": "Load every crate aboard the rock", "effects": [ { "resource": "supplies", "delta": 3 }, { "resource": "health", "delta": -1 } ] },
+        { "side": "right", "label": "Read the letter first", "effects": [ { "resource": "spirits", "delta": 2 }, { "resource": "supplies", "delta": 1 } ] }
+      ]
+    },
+    {
+      "id": "great_storm",
+      "speaker": "narrator",
+      "body": "The worst of them all. The whole tower hums in the gale and a green sea breaks clean over the lantern glass.",
+      "appearWhen": { "allOf": [ { "resource": "oil", "op": ">=", "value": 2 } ] },
+      "choices": [
+        { "side": "left", "label": "Stay at the lamp till it breaks or you do", "effects": [ { "resource": "oil", "delta": -2 }, { "resource": "health", "delta": -2 }, { "resource": "spirits", "delta": 2 } ] },
+        { "side": "right", "label": "Save yourself, leave the light", "effects": [ { "resource": "health", "delta": 1 }, { "resource": "spirits", "delta": -3 } ] }
       ]
     }
   ],
