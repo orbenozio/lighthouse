@@ -60,7 +60,7 @@ MonoBehaviour:
   medallion:
     size:
       set: 1
-      value: 260
+      value: 290
     ringColor:
       set: 0
       value: {r: 0, g: 0, b: 0, a: 0}
